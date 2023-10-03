@@ -20,6 +20,7 @@ cd pet-shop-calculator
 3. Execute o programa Python:
     ```bash
 python3 pet_shop_calculator.py
+```
 
 4. Siga as instruções no terminal para fornecer a data desejada (no formato dd/mm/aaaa) e a quantidade de cães pequenos e grandes.
 
