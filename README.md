@@ -15,12 +15,12 @@ git clone git@github.com:calinybasilio/Pets.git
 ```
 2. Navegue até o diretório onde você clonou o repositório:
 ```bash
-cd pet-shop-calculator
+cd [nome do diretório]
 ```
 3. Execute o script:
    
 ```bash
-python3 pet_shop_calculator.py
+python3 principal.py
 ```
 
 4. Siga as instruções no terminal para fornecer a data desejada (no formato dd/mm/aaaa) e a quantidade de cães pequenos e grandes.
