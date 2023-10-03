@@ -17,7 +17,7 @@ git clone https://github.com/seu-usuario/pet-shop-calculator.git
 ```bash
 cd pet-shop-calculator
 ```
-3. Execute o programa Python:
+3. Execute o script:
    
 ```bash
 python3 pet_shop_calculator.py
