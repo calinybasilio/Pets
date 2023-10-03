@@ -11,7 +11,7 @@ Antes de rodar este programa, você deve ter o Python 3 instalado em seu sistema
 1. Clone este repositório para o seu computador:
 
 ```bash
-git clone https://github.com/seu-usuario/pet-shop-calculator.git
+git clone git@github.com:calinybasilio/Pets.git
 ```
 2. Navegue até o diretório onde você clonou o repositório:
 ```bash
