@@ -15,7 +15,7 @@ git clone git@github.com:calinybasilio/Pets.git
 ```
 2. Navegue até o diretório onde você clonou o repositório:
 ```bash
-cd [nome do diretório]
+cd nomeDoDiretorio
 ```
 3. Execute o script:
    
