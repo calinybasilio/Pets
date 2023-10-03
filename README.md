@@ -1,27 +1,41 @@
-#Premissas assumidas
-Linguagem: Python 3.8.5
-Sistema Operacional: Linux - Ubuntu
-Ambiente de desenvolvimento: PyCharm
+# Pet Shop Calculator (Python 3)
 
-#Decisões de projeto
-Criei uma função para cada situação dos Pets Shops, tendo como retorno o
-somatório do preço dos serviços. Esse retorno foi alocado em uma lista, com três tuplas.
-Dentro de cada tupla, foram incluídos 03 argumentos (retorno da função, distância, nome do
-Pet Shop).
+Este é um programa Python simples para calcular o custo de serviços de pet shop com base na data e na quantidade de cães pequenos e grandes. Este programa é projetado para Python 3.
 
-Para definir qual Pet Shop oferta o melhor valor, foi utilizado o método sorted() para
-ordenação da lista, e o itemgetter do módulo operator para utilização de dois parâmetros na
-ordenação. O itemgetter recebeu como parâmetros, o valor total dos serviços e a distância
-do canil em relação ao Pet Shop, para que em caso de empate, ordenasse pelo Pet Shop
-mais próximo.
+## Pré-requisitos
 
-Levando em consideração a quantidade pequena de valores a serem comparados,
-poderia ter sido utilizado "if", mas preferi o método de ordenação por ser possível resolver o
-problema com uma menor quantidade de código, facilitando assim a compreensão por
-outros desenvolvedores.
+Antes de rodar este programa, você deve ter o Python 3 instalado em seu sistema. Você pode baixar o Python em [python.org](https://www.python.org/downloads/).
 
-#Instruções para executar o sistema
-Conforme expressado anteriormente, utilizei a IDE PyCharm para implementação do
-desafio proposto, dessa forma recomendo-a para executar o código enviado. Como
-alternativa, sugiro acessar o diretório do projeto pelo terminal, seguido do comando python
-principal.py.
+## Como Rodar o Código
+
+1. Clone este repositório para o seu computador:
+
+    ```bash
+git clone https://github.com/seu-usuario/pet-shop-calculator.git
+
+2. Navegue até o diretório onde você clonou o repositório:
+    ```bash
+cd pet-shop-calculator
+
+3. Execute o programa Python:
+    ```bash
+python3 pet_shop_calculator.py
+
+4. Siga as instruções no terminal para fornecer a data desejada (no formato dd/mm/aaaa) e a quantidade de cães pequenos e grandes.
+
+5. O programa calculará os custos dos pet shops disponíveis com base nas informações fornecidas e mostrará o resultado, indicando o melhor pet shop com o menor custo.
+
+## Personalização
+Você pode personalizar as informações dos pet shops e seus preços no arquivo pet_shop_calculator.py modificando a classe PetShop e os objetos de pet shop criados no código.
+
+## Exemplo de Uso
+Aqui está um exemplo de como usar o programa:
+
+    ```bash
+Por favor, informe a data em que deseja atendimento (dd/mm/aaaa): 25/12/2023
+Informe a quantidade de cães PEQUENOS para qual deseja atendimento: 2
+Informe a quantidade de cães GRANDES para qual deseja atendimento: 1
+
+O melhor pet shop é o Meu Canino Feliz, com um valor total de R$ 96.00.
+
+Isso é apenas um exemplo e os resultados podem variar dependendo das informações fornecidas.

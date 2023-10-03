@@ -1,79 +1,60 @@
 import datetime
-from operator import itemgetter
 
-#Funções com cálculos referentes aos serviços dos Pets
+class PetShop:
+    def __init__(self, nome, preco_pequeno_semana, preco_grande_semana, preco_pequeno_fds, preco_grande_fds):
+        self.nome = nome
+        self.preco_pequeno_semana = preco_pequeno_semana
+        self.preco_grande_semana = preco_grande_semana
+        self.preco_pequeno_fds = preco_pequeno_fds
+        self.preco_grande_fds = preco_grande_fds
 
-#Meu Canino Feliz - Durante a Semana
-def meu_Canino_Semana (caesPequenos, caesGrandes):
-    meuCanino_P_semana = caesPequenos * 20
-    meuCanino_G_semana = caesGrandes * 40
-    return meuCanino_G_semana + meuCanino_P_semana
+    def calcular_preco(self, caes_pequenos, caes_grandes, data):
+        if data.weekday() < 5:  # Dias úteis (segunda a sexta-feira)
+            return caes_pequenos * self.preco_pequeno_semana + caes_grandes * self.preco_grande_semana
+        else:  # Fim de semana (sábado ou domingo)
+            return caes_pequenos * self.preco_pequeno_fds + caes_grandes * self.preco_grande_fds
 
-#Meu Canino Feliz - Durante o final de semana
-def meu_Canino_FDS (caesPequenos, caesGrandes):
-    vaiRex_P_FDS = caesPequenos * (20 + (20 * 0.2))
-    vaiRex_G_FDS = caesGrandes * (40 + (40 * 0.2))
-    return vaiRex_P_FDS + vaiRex_G_FDS
+def obter_data_valida():
+    while True:
+        data_str = input("Por favor, informe a data em que deseja atendimento (dd/mm/aaaa): ")
+        try:
+            dia, mes, ano = map(int, data_str.split('/'))
+            data_atendimento = datetime.date(ano, mes, dia)
+            return data_atendimento
+        except ValueError:
+            print("Formato de data inválido. Use dd/mm/aaaa.")
 
-#Vai Rex - Durante a Semana
-def vai_Rex_Semana (caesPequenos, caesGrandes):
-    vaiRex_Uteis_P = caesPequenos * 15
-    vaiRex_Uteis_G = caesGrandes * 50
-    return vaiRex_Uteis_P + vaiRex_Uteis_G
+def obter_quantidade_animais_valida():
+    while True:
+        try:
+            caes_pequenos = int(input("Informe a quantidade de cães PEQUENOS para qual deseja atendimento: "))
+            caes_grandes = int(input("Informe a quantidade de cães GRANDES para qual deseja atendimento: "))
+            if caes_pequenos >= 0 and caes_grandes >= 0:
+                return caes_pequenos, caes_grandes
+            else:
+                print("A quantidade de cães deve ser um número não negativo.")
+        except ValueError:
+            print("Quantidade inválida. Insira um número inteiro não negativo para a quantidade de cães.")
 
-#Vai Rex - Durante o Final de Semana
-def vai_Rex_FDS(caesPequenos, caesGrandes):
-    vaiRex_P_FDS = caesPequenos * 20
-    vaiRex_G_FDS = caesGrandes * 55
-    return vaiRex_P_FDS + vaiRex_G_FDS
+# Criando objetos PetShop com os preços
+meu_canino = PetShop("Meu Canino Feliz", 20, 40, 24, 48)
+vai_rex = PetShop("Vai Rex", 15, 50, 20, 55)
+chow_chawgas = PetShop("Chow Chawgas", 30, 45, 30, 45)
 
-#Chow Chawgas- Durante todos os dias
-def chow_Chagas (caesPequenos, caesGrandes):
-    chowChawgas_P = caesPequenos * 30
-    chowChawgas_G = caesGrandes * 45
-    return chowChawgas_P + chowChawgas_G
+# Solicitando informações ao cliente
+data_atendimento = obter_data_valida()
+caes_pequenos, caes_grandes = obter_quantidade_animais_valida()
 
-#Solicitando data ao cliente
-print("Por favor, informe a data em que deseja atendimento (dd/mm/aaaa): ")
-data = str(input())
+# Calculando os preços para cada pet shop
+preco_meu_canino = meu_canino.calcular_preco(caes_pequenos, caes_grandes, data_atendimento)
+preco_vai_rex = vai_rex.calcular_preco(caes_pequenos, caes_grandes, data_atendimento)
+preco_chow_chawgas = chow_chawgas.calcular_preco(caes_pequenos, caes_grandes, data_atendimento)
 
-#Solicitando quantidade de cães pequenos que o cliente deseja atendimento
-print("Informe a quantidade de cães PEQUENOS para qual deseja atendimento: ")
-caesPequenos = int(input())
+# Criando uma lista com os resultados
+lista = [(preco_meu_canino, 2, "Meu Canino Feliz"), (preco_vai_rex, 1.7, "Vai Rex"), (preco_chow_chawgas, 0.8, "Chow Chawgas")]
 
-#Solicitando quantidade de cães grandes que o cliente deseja atendimento
-print("Informe a quantidade de cães GRANDES para qual deseja atendimento: ")
-caesGrandes = int(input())
+# Ordenando a lista pelo preço total e pela distância
+melhor_pet_shop = min(lista, key=lambda x: (x[0], -x[1]))
 
-#Tratando data inserida pelo cliente
-d, m, a = data.split('/')
-ano = int(a)
-mes = int(m)
-dia = int(d)
-
-data_atendimento = datetime.date(ano, mes, dia)
-
-dias = ('Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado', 'Domingo')
-dia_semana = dias[data_atendimento.weekday()]
-#print(dia_semana)
-#print(data_atendimento)
-
-#Chamando funções conforme data de atendimento solicitado
-if dia_semana == 'Sábado' or dia_semana == 'Domingo':
-    meu_canino = meu_Canino_FDS(caesPequenos, caesGrandes)
-    vai_rex = vai_Rex_FDS(caesPequenos, caesGrandes)
-    chow_chawgas = chow_Chagas(caesPequenos, caesGrandes)
-else:
-    meu_canino = meu_Canino_Semana(caesPequenos, caesGrandes)
-    vai_rex = vai_Rex_Semana(caesPequenos, caesGrandes)
-    chow_chawgas = chow_Chagas(caesPequenos, caesGrandes)
-    #print("Entrou!!!")
-
-#Lista com tuplas possuindo retorno das funções, distância, e nome do PetShop
-lista = [(meu_canino, 2, "Meu Canino Feliz"), (vai_rex, 1.7, "Vai Rex"), (chow_chawgas, 0.8, "Chow Chawgas")]
-
-#Ordenação da lista
-total = (sorted(lista, key=itemgetter(0, 1))[0])
-
-#Imprimindo o Pet Shop com o melhor valor e mais próximo do canil do Sr. Eduardo
-print("O melhor canil é o", total[2], ", tendo como valor total dos banhos solicitados R$", total[0])
+# Imprimindo o resultado
+print(f"O melhor pet shop é o {melhor_pet_shop[2]}, com um valor total de R${melhor_pet_shop[0]:.2f}.")
