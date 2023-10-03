@@ -28,7 +28,7 @@ python3 principal.py
 5. O programa calculará os custos dos pet shops disponíveis com base nas informações fornecidas e mostrará o resultado, indicando o melhor pet shop com o menor custo.
 
 ## Personalização
-Você pode personalizar as informações dos pet shops e seus preços no arquivo ```python pet_shop_calculator.py``` modificando a classe ```Python PetShop``` e os objetos de pet shop criados no código.
+Você pode personalizar as informações dos pet shops e seus preços no arquivo ```python principal.py``` modificando a classe ```Python PetShop``` e os objetos de pet shop criados no código.
 
 ## Exemplo de Uso
 Aqui está um exemplo de como usar o programa:
